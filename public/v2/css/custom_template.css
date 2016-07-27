@@ -1,0 +1,278 @@
+.rightView{
+    border: 1px dashed #e1e1e1;
+    background-color: #f9f8f8;
+    padding: 130px 95px 10px 95px;
+    height: calc(100vh - 100px);
+    //overflow-y: auto;
+}
+
+.rightView .mntitl{
+    line-height: 22px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #a5a5a5;
+    text-align: center;
+    padding-bottom: 63px;
+}
+
+.rightView dl dt{
+    font-size: 16px;
+    line-height: 44px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.rightView dl  dt a{
+    padding-left: 16px;
+    color: #aaa8a8;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.rightView .mnatr{
+    text-align: center;
+}
+
+.containerBlockStyle{
+    width: calc(100% - 1px);
+    height: 250px;
+    background-color: #bbd7e3;
+    border: 1px solid #aaa8a8;
+    position: relative !important;
+}
+
+.imgBlockStyle{
+    width: calc(100% - 0px);
+    height: 250px;
+    background-color: #bbd7e3;
+    //border: 1px solid #aaa8a8;
+    position: relative !important;
+    //margin-top: 23px;
+    //margin-left: 1px;
+}
+
+.resizableImg{
+    resize: vertical !important;
+}
+
+.drag{
+    z-index: 12;
+}
+
+.hdBlck .editable h1
+{
+    margin: 0px 0px 0px 0px;
+    color: #ffffff;
+    line-height: 55px;
+}
+
+.hdBlck .editable h2{
+    margin: 0px 0px 0px 0px;
+    color: #ffffff;
+    line-height: 46px;
+}
+
+.hdBlck .editable h3{
+    margin: 0px 0px 0px 0px;
+    color: #ffffff;
+    line-height: 36px;
+}
+
+.hdBlck .editable h4 {
+    margin: 0px 0px 0px 0px;
+    color: #ffffff;
+    line-height: 27px;
+}
+
+.hdBlck{
+    position: relative;
+    /*top: 8px;*/
+}
+
+.txtBlck{
+    position: relative;
+    /*top: 8px;*/
+}
+
+.mtbBlck{
+    position: relative;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    /*top: 18px;*/
+}
+
+.txtBlck .editable p {
+    margin: 0px 0px 0px 0px;
+    color: #ffffff;
+}
+
+.emailMailto{
+    width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: center;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+}
+
+.mailto{
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    text-decoration: none;
+    padding: 15px 58px 15px 58px;
+    border-radius: 3px;
+}
+
+a.mailto:link, a.mailto:link:visited, a.mailto:link:hover, a.mailto:link:focus, a.mailto:link:active {
+    color: #000000;
+    text-decoration: none;
+    background-color: #FFFFFF;
+}
+
+.videoBlockStyle a[data-target="#videoModal"]{
+    position: absolute;
+    z-index: 99;
+    top: 5px;
+    left: calc(100% - 27px);
+}
+
+.videoBlockStyle a[data-target="#cautionModal"]{
+    position: absolute;
+    z-index: 99;
+    top: 5px;
+    left: 5px;
+}
+
+.videoBlockStyle{
+    width: calc(100% - 0px);
+    height: 285px;
+    background-color: #bbd7e3;
+    /*border: 1px solid #aaa8a8;*/
+    position: relative !important;
+    /*margin-top: 23px;*/
+    /*margin-left: 1px;*/
+}
+
+.editable .cke_editable {
+    outline: none;
+}
+
+.containerBlockStyle a i.settIcon,
+.imgBlockStyle a i.settIcon,
+.hdBlck a i.settIcon,
+.txtBlck a i.settIcon,
+.mtbBlck a i.settIcon,
+.videoBlockStyle a i.settIcon{
+    visibility: hidden;
+    /*font-size: 15px;*/
+    /*color: #aaa8a8;*/
+}
+
+.cke_contents_ltr blockquote {
+    padding-left: 20px;
+    padding-right: 8px;
+    border-left-width: 5px;
+}
+#footer {
+    background: rgb(47,40,37);
+    text-align: center;
+    margin: 0 auto; 
+}
+#footer ul {
+    margin: 0px;
+}
+
+#footer li {
+    display: inline-block;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 10px 2px;
+    background: url(../images/footer-li-bg.jpg) right center no-repeat;
+    margin: 0px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+#footer li:last-child {
+    background: none;
+}
+
+#footer li a {
+    color: rgb(171,171,171);
+    margin-right: 6px;
+}
+
+blockquote {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+}
+/***************** footer *********************/
+
+/************/
+.containerBlockStyle a[data-target="#containerModal"]{
+    position: absolute;
+    z-index: 99;
+    top: 3px;
+    left: calc(100% - 27px);
+}
+.containerBlockStyle .imgBlockStyle a[data-target="#imageModal"]{
+    position: absolute;
+    z-index: 99;
+    top: 2px;
+    left: calc(100% - 47px);
+}
+.containerBlockStyle .mtbBlck a[data-target="#mailModal"],
+.containerBlockStyle .imgBlockStyle .mtbBlck a[data-target="#mailModal"]{
+    position: absolute;
+    z-index: 99;
+    top: 22px;
+    left: calc(100% - 26px);
+}
+.containerBlockStyle a[data-target="#videoModal"],
+.containerBlockStyle .videoBlockStyle a[data-target="#videoModal"]{
+    position: absolute;
+    z-index: 99;
+    top: 2px;
+    left: calc(100% - 47px);
+}
+/************/
+
+.containerBlockStyle a[data-target="#cautionModal"]{
+    position: absolute;
+    z-index: 99;
+    left: 5px;
+    top: 3px;
+}
+.containerBlockStyle .imgBlockStyle a[data-target="#cautionModal"]{
+    position: absolute;
+    z-index: 99;
+    left: 22px;
+    top: 2px;
+}
+.containerBlockStyle .hdBlck a[data-target="#cautionModal"]{
+    position: absolute;
+    z-index: 99;
+    left: 4px;
+    top: 18px;
+}
+.containerBlockStyle .txtBlck a[data-target="#cautionModal"]{
+    position: absolute;
+    z-index: 99;
+    left: 4px;
+    top: 18px;
+}
+.containerBlockStyle .mtbBlck a[data-target="#cautionModal"]{
+    position: absolute;
+    z-index: 99;
+    left: 5px;
+    top: 22px;
+}
+.containerBlockStyle .videoBlockStyle  a[data-target="#cautionModal"]{
+    position: absolute;
+    z-index: 99;
+    left: 22px;
+    top: 2px;
+}

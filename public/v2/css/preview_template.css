@@ -1,0 +1,93 @@
+.containerBlockStyle {
+    height: auto !important;
+}
+
+.show-container {
+    padding: 0px;
+    overflow: hidden;
+}
+
+.imgBlockStyle, .hdBlck, .txtBlck, .mtbBlck {
+    width: 510px;
+    margin: 0 auto;
+}
+
+/******************** MEDIA QUERY **************************************/
+@media (max-width: 530px) {
+
+
+    .imgBlockStyle, .videoBlockStyle, .hdBlck, .txtBlck {
+        width: 100% !important;
+    }
+
+
+}
+
+/* ----------- Galaxy ----------- */
+
+/* Portrait and Landscape */
+@media screen
+and (device-width: 320px)
+and (device-height: 640px){
+
+    h1,h2{
+        font-size: 27px;
+    }
+
+    p{
+        font-size: 10px;
+    }
+
+    .containerBlockStyle {
+        height: auto;
+    }
+
+    .imgBlockStyle, .videoBlockStyle, .hdBlck, .txtBlck, .mtbBlck  {
+        width: 100% !important;
+    }
+
+    .imgBlockStyle{
+        /*height: auto;*/
+        background-size: cover !important;
+    }
+
+    .hdBlck, .txtBlck {
+        height: auto;
+    }
+
+}
+
+
+/* ----------- iPhone ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 667px){
+
+    h1,h2{
+        font-size: 23px;
+    }
+
+    p{
+        font-size: 10px;
+    }
+
+    .containerBlockStyle {
+        height: auto;
+    }
+
+    .imgBlockStyle, .videoBlockStyle, .hdBlck, .txtBlck, .mtbBlck  {
+        width: 100% !important;
+    }
+
+    .imgBlockStyle{
+        /*height: auto;*/
+        background-size: cover !important;
+    }
+
+    .hdBlck, .txtBlck {
+        height: auto;
+    }
+
+}

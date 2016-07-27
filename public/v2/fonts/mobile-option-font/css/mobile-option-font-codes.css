@@ -1,0 +1,18 @@
+
+.icon-link:before { content: '\e800'; } /* '' */
+.icon-add-shopping-cart:before { content: '\e801'; } /* '' */
+.icon-check-black:before { content: '\e802'; } /* '' */
+.icon-check:before { content: '\e804'; } /* '' */
+.icon-dashboard:before { content: '\e805'; } /* '' */
+.icon-email:before { content: '\e806'; } /* '' */
+.icon-image:before { content: '\e807'; } /* '' */
+.icon-info:before { content: '\e808'; } /* '' */
+.icon-play:before { content: '\e809'; } /* '' */
+.icon-save:before { content: '\e80a'; } /* '' */
+.icon-settings:before { content: '\e80b'; } /* '' */
+.icon-shopping-cart:before { content: '\e80c'; } /* '' */
+.icon-text:before { content: '\e80d'; } /* '' */
+.icon-like:before { content: '\e80e'; } /* '' */
+.icon-videocam:before { content: '\e80f'; } /* '' */
+.icon-view:before { content: '\e810'; } /* '' */
+.icon-move:before { content: '\e811'; } /* '' */
