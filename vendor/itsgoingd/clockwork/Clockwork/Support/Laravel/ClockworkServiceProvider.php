@@ -19,7 +19,9 @@ class ClockworkServiceProvider extends ServiceProvider
 		}
 
 		$this->app['clockwork.eloquent']->listenToEvents();
-		$this->app->make('clockwork.swift');
+
+		// create the clockwork instance so all data sources are initialized at this point
+		$this->app->make('clockwork');
 
 		if (!$this->app['clockwork.support']->isEnabled()) {
 			return; // Clockwork is disabled, don't register the route
@@ -100,6 +102,10 @@ class ClockworkServiceProvider extends ServiceProvider
 
 		$this->registerCommands();
 
+		if ($this->app['clockwork.support']->getConfig('register_helpers', true)) {
+			require __DIR__ . '/helpers.php';
+		}
+
 		if ($this->isLegacyLaravel()) {
 			$this->app->middleware('Clockwork\Support\Laravel\ClockworkLegacyMiddleware', array($this->app));
 		} else if ($this->isOldLaravel()) {
@@ -131,11 +137,11 @@ class ClockworkServiceProvider extends ServiceProvider
 
 	public function isLegacyLaravel()
 	{
-		return Str::startsWith(Application::VERSION, array('4.1.', '4.2.'));
+		return Str::startsWith(Application::VERSION, array('4.1', '4.2'));
 	}
 
 	public function isOldLaravel()
 	{
-		return Str::startsWith(Application::VERSION, '4.0.');
+		return Str::startsWith(Application::VERSION, '4.0');
 	}
 }

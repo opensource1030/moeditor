@@ -66,7 +66,7 @@ return [
 
         'mongodb' => array(
             'driver'   => 'mongodb',
-            'host'     => 'localhost',
+            'host'     => '127.0.0.1',
             'port'     => 27017,
             'username' => 'tesha',
             'password' => 'kBW95&W(yz?i',

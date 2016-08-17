@@ -9,7 +9,7 @@ use Illuminate\Foundation\Application;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Data source for Laravel 4 framework, provides application log, timeline, request and response information
+ * Data source for Laravel framework, provides application log, timeline, request and response information
  */
 class LaravelDataSource extends DataSource
 {
@@ -99,16 +99,6 @@ class LaravelDataSource extends DataSource
 		$this->app->booted(function() use($timeline)
 		{
 			$timeline->endEvent('boot');
-		});
-
-		$this->app['router']->before(function() use($timeline)
-		{
-			$timeline->startEvent('dispatch', 'Router dispatch.');
-		});
-
-		$this->app['router']->after(function() use($timeline)
-		{
-			$timeline->endEvent('dispatch');
 		});
 
 		$this->app['events']->listen('clockwork.controller.start', function() use($timeline)
@@ -228,7 +218,7 @@ class LaravelDataSource extends DataSource
 					'name'   => $name,
 					'action' => $route->getAction() ?: 'anonymous function',
 					'before' => implode(', ', $route->getBeforeFilters()),
-					'after'  => implode(', ', $route->getAfterFilters()),
+					'after'  => implode(', ', $route->getAfterFilters())
 				);
 			}
 		} else { // Laravel 4.1
@@ -240,8 +230,8 @@ class LaravelDataSource extends DataSource
 					'uri'    => $route->uri(),
 					'name'   => $route->getName(),
 					'action' => $route->getActionName() ?: 'anonymous function',
-					'before' => implode(', ', array_keys($route->beforeFilters())),
-					'after'  => implode(', ', array_keys($route->afterFilters())),
+					'before' => method_exists($route, 'beforeFilters') ? implode(', ', array_keys($route->beforeFilters())) : '',
+					'after'  => method_exists($route, 'afterFilters') ? implode(', ', array_keys($route->afterFilters())) : ''
 				);
 			}
 		}

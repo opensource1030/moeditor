@@ -6,6 +6,15 @@ use Mobile_Detect;
 class Agent extends Mobile_Detect {
 
     /**
+     * List of desktop devices.
+     *
+     * @var array
+     */
+    protected static $additionalDevices = array(
+        'Macintosh'        => 'Macintosh',
+    );
+
+    /**
      * List of additional operating systems.
      *
      * @var array
@@ -57,6 +66,7 @@ class Agent extends Mobile_Detect {
         'Netscape'          => 'Netscape/[VER]',
         'Mozilla'           => 'rv:[VER]',
         'IE'                => array('IEMobile/[VER];', 'IEMobile [VER]', 'MSIE [VER];', 'rv:[VER]'),
+        'Edge'              => 'Edge/[VER]',
     );
 
     /**
@@ -88,6 +98,7 @@ class Agent extends Mobile_Detect {
         if (!$rules)
         {
             $rules = $this->mergeRules(
+                static::$additionalDevices, // NEW
                 static::$phoneDevices,
                 static::$tabletDevices,
                 static::$operatingSystems,
@@ -125,14 +136,31 @@ class Agent extends Mobile_Detect {
      */
     public function languages($acceptLanguage = null)
     {
-        if (!$acceptLanguage)
+        if (! $acceptLanguage)
         {
             $acceptLanguage = $this->getHttpHeader('HTTP_ACCEPT_LANGUAGE');
         }
 
         if ($acceptLanguage)
         {
-            return explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($acceptLanguage))));
+            $languages = array();
+
+            // Parse accept language string.
+            foreach (explode(',', $acceptLanguage) as $piece)
+            {
+                $parts = explode(';', $piece);
+
+                $language = strtolower($parts[0]);
+
+                $priority = empty($parts[1]) ? 1. : floatval(str_replace('q=', '', $parts[1]));
+
+                $languages[$language] = $priority;
+            }
+
+            // Sort languages by priority.
+            arsort($languages);
+
+            return array_keys($languages);
         }
 
         return array();
@@ -204,6 +232,7 @@ class Agent extends Mobile_Detect {
     {
         // Get device rules
         $rules = $this->mergeRules(
+            static::$additionalDevices, // NEW
             static::$phoneDevices,
             static::$tabletDevices,
             static::$utilities
@@ -222,6 +251,18 @@ class Agent extends Mobile_Detect {
     public function isDesktop($userAgent = null, $httpHeaders = null)
     {
         return (! $this->isMobile() && ! $this->isTablet() && ! $this->isRobot());
+    }
+
+    /**
+     * Check if the device is a mobile phone.
+     *
+     * @param  string $userAgent   deprecated
+     * @param  array  $httpHeaders deprecated
+     * @return bool
+     */
+    public function isPhone($userAgent = null, $httpHeaders = null)
+    {
+        return ($this->isMobile() && ! $this->isTablet());
     }
 
     /**

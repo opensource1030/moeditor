@@ -13,7 +13,7 @@ class ClockworkServiceProvider extends ServiceProvider
 {
 	public function boot()
 	{
-		if ($this->isRunningWithFacades()) {
+		if ($this->isRunningWithFacades() && !class_exists('Clockwork')) {
 			class_alias('Clockwork\Support\Lumen\Facade', 'Clockwork');
 		}
 
@@ -97,6 +97,10 @@ class ClockworkServiceProvider extends ServiceProvider
 		$this->app->alias('clockwork', 'Clockwork\Clockwork');
 
 		$this->registerCommands();
+
+		if ($this->app['clockwork.support']->getConfig('register_helpers', true)) {
+			require __DIR__ . '/helpers.php';
+		}
 	}
 
 	/**

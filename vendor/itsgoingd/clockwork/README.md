@@ -15,12 +15,12 @@ This extension provides out of the box support for Laravel, Slim 2 and CodeIgnit
 To install latest version simply add it to your `composer.json`:
 
 ```javascript
-"itsgoingd/clockwork": "~1.9"
+"itsgoingd/clockwork": "~1.12"
 ```
 
 ### Laravel
 
-Once Clockwork is installed, you need to register Laravel service provider, in your `app/config/app.php`:
+Once Clockwork is installed, you need to register Laravel service provider, in your `config/app.php`:
 
 ```php
 'providers' => array(
@@ -50,27 +50,27 @@ For Laravel 4 you can do the same with this command:
 $ php artisan config:publish itsgoingd/clockwork --path vendor/itsgoingd/clockwork/Clockwork/Support/Laravel/config/
 ```
 
-Clockwork also comes with a facade, which provides an easy way to add records to the Clockwork log and events to the timeline. You can register the facade in your `app/config/app.php`:
+Clockwork also comes with a `clock()` helper function, which provides an easy way to add records to the Clockwork log and events to the timeline.
+
+```php
+clock()->startEvent('event_name', 'Event description.'); // event called 'Event description.' appears in Clockwork timeline tab
+
+clock('Message text.'); // 'Message text.' appears in Clockwork log tab
+logger('Message text.'); // 'Message text.' appears in Clockwork log tab as well as application log file
+
+clock(array('hello' => 'world')); // logs json representation of the array
+clock(new Object()); // logs string representation of the objects if the object implements __toString magic method, logs json representation of output of toArray method if the object implements it, if neither is the case, logs json representation of the object cast to array
+
+clock()->endEvent('event_name');
+```
+
+If you prefer using Facades, add following to your `app/config/app.php`:
 
 ```php
 'aliases' => array(
 	...
 	'Clockwork' => 'Clockwork\Support\Laravel\Facade',
 )
-```
-
-Now you can use the following commands:
-
-```php
-Clockwork::startEvent('event_name', 'Event description.'); // event called 'Event description.' appears in Clockwork timeline tab
-
-Clockwork::info('Message text.'); // 'Message text.' appears in Clockwork log tab
-Log::info('Message text.'); // 'Message text.' appears in Clockwork log tab as well as application log file
-
-Clockwork::info(array('hello' => 'world')); // logs json representation of the array
-Clockwork::info(new Object()); // logs string representation of the objects if the object implements __toString magic method, logs json representation of output of toArray method if the object implements it, if neither is the case, logs json representation of the object cast to array
-
-Clockwork::endEvent('event_name');
 ```
 
 ### Lumen
@@ -93,25 +93,7 @@ $app->middleware([
 By default, Clockwork will only be available in debug mode (`APP_DEBUG` set to true), you can change this and other settings via environment variables.
 Simply specify the setting as environment variable prefixed with `CLOCKWORK_`, eg. `CLOCKWORK_ENABLE`, [full list of available settings](https://raw.githubusercontent.com/itsgoingd/clockwork/v1/Clockwork/Support/Laravel/config/clockwork.php).
 
-Clockwork also comes with a facade, which provides an easy way to add records to the Clockwork log and events to the timeline. The facade will be automatically registered when you enable facades for your Lumen app, in `bootstrap/app.php`:
-
-```php
-$app->withFacades();
-```
-
-Now you can use the following commands:
-
-```php
-Clockwork::startEvent('event_name', 'Event description.'); // event called 'Event description.' appears in Clockwork timeline tab
-
-Clockwork::info('Message text.'); // 'Message text.' appears in Clockwork log tab
-Log::info('Message text.'); // 'Message text.' appears in Clockwork log tab as well as application log file
-
-Clockwork::info(array('hello' => 'world')); // logs json representation of the array
-Clockwork::info(new Object()); // logs string representation of the objects if the object implements __toString magic method, logs json representation of output of toArray method if the object implements it, if neither is the case, logs json representation of the object cast to array
-
-Clockwork::endEvent('event_name');
-```
+Clockwork also comes with a `clock()` helper function (see examples above) and a facade thats automatically registered when you enable facades in your `bootstrap/app.php`.
 
 ### Slim 2
 
@@ -184,6 +166,8 @@ If you would like to see or are working on a support for yet unsupported framewo
 - [guzzle-clockwork](https://github.com/hannesvdvreken/guzzle-clockwork) - Plugin for logging Guzzle requests to Clockwork by [hannesvdvreken](https://github.com/hannesvdvreken)
 - [silverstripe-clockwork](https://github.com/markguinn/silverstripe-clockwork) - Integration for SilverStripe CMS/framework by [markguinn](https://github.com/markguinn)
 - [clockwork-firebug](https://github.com/sidorovich/clockwork-firebug) - Extension for Firebug (like for Chrome) by [Pavel Sidorovich](https://github.com/sidorovich)
+
+- [laravel-doctrine](http://www.laraveldoctrine.org) - Doctrine support for Laravel, contains ootb Clockwork support
 
 ## Licence
 

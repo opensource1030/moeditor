@@ -465,7 +465,7 @@ class CssWhitesmithsFormatter extends aCssFormatter
 			}
 			elseif ($class === "CssAtKeyframesStartToken")
 			{
-				$r[] = $indent . "@keyframes \"" . $token->Name . "\"";
+				$r[] = $indent . "@keyframes " . $token->Name;
 				$r[] = $this->indent . $indent . "{";
 				$level++;
 			}
@@ -493,10 +493,10 @@ class CssWhitesmithsFormatter extends aCssFormatter
 				$r[] = $this->indent . $indent . "{";
 				$level++;
 			}
-			elseif ($class == "CssAtFontFaceDeclarationToken"
+			elseif ($class === "CssAtFontFaceDeclarationToken"
 				|| $class === "CssAtKeyframesRulesetDeclarationToken"
 				|| $class === "CssAtPageDeclarationToken"
-				|| $class == "CssAtVariablesDeclarationToken"
+				|| $class === "CssAtVariablesDeclarationToken"
 				|| $class === "CssRulesetDeclarationToken"
 			)
 			{
@@ -1840,7 +1840,7 @@ class CssOtbsFormatter extends aCssFormatter
 			}
 			elseif ($class === "CssAtKeyframesStartToken")
 			{
-				$r[] = $indent . "@keyframes \"" . $token->Name . "\" {";
+				$r[] = $indent . "@keyframes " . $token->Name . " {";
 				$level++;
 			}
 			elseif ($class === "CssAtMediaStartToken")
@@ -1863,10 +1863,10 @@ class CssOtbsFormatter extends aCssFormatter
 				$r[] = $indent . implode(", ", $token->Selectors) . " {";
 				$level++;
 			}
-			elseif ($class == "CssAtFontFaceDeclarationToken"
+			elseif ($class === "CssAtFontFaceDeclarationToken"
 				|| $class === "CssAtKeyframesRulesetDeclarationToken"
 				|| $class === "CssAtPageDeclarationToken"
-				|| $class == "CssAtVariablesDeclarationToken"
+				|| $class === "CssAtVariablesDeclarationToken"
 				|| $class === "CssRulesetDeclarationToken"
 			)
 			{
@@ -4467,7 +4467,7 @@ class CssAtKeyframesStartToken extends aCssAtBlockStartToken
 		{
 			return "@-moz-keyframes " . $this->Name . " {";
 		}
-		return "@" . $this->AtRuleName . " \"" . $this->Name . "\"{";
+		return "@" . $this->AtRuleName . " " . $this->Name . "{";
 	}
 }
 

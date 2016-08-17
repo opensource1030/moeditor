@@ -151,7 +151,7 @@ return [
         'Jenssegers\Mongodb\MongodbServiceProvider',
         'Yangqi\Htmldom\HtmldomServiceProvider',
         'Wpb\StringBladeCompiler\StringBladeCompilerServiceProvider',
-		 'Jenssegers\Agent\AgentServiceProvider',
+		'Jenssegers\Agent\AgentServiceProvider',
         'Frenzy\Turbolinks\TurbolinksServiceProvider',
         'Clockwork\Support\Laravel\ClockworkServiceProvider',
         'Chumper\Zipper\ZipperServiceProvider',

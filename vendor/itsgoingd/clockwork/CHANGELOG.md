@@ -1,3 +1,35 @@
+1.12
+- added collecting of caller file name and line number for queries and model name (Laravel 4.2+) for ORM queries to the Eloquent data source (thanks OmarMakled and fitztrev for the idea)
+- added collecting of context, caller file name and line number to the logger (thanks crissi for the idea)
+- fixed crash in Lumen data source when running unit tests with simulated requests on Lumen
+- fixed compatibility with Laravel 4.0
+
+1.11.2
+- switched to PSR-4 autoloading
+- fixed Swift data source crash when sending email with no from/to address specified (thanks marksecurelogin)
+
+1.11.1
+- added support for DateTimeImmutable in Doctrine data source (thanks morfin)
+- fixed not being able to log null values via the "clock" helper function
+- fixed Laravel 4.2-dev not being properly detected as 4.2 release (thanks DemianD)
+
+1.11
+- added support for Lumen 5.2 (thanks lukeed)
+- added "clock" helper function
+- fixed data sources being initialized too late (thanks morfin)
+- fixed code style in Doctrine data source
+- removed Laravel log dependency from Doctrine data source
+- NOTE laravel-doctrine provides ootb support for Clockwork, you should use this instead of included Doctrine data source with Laravel
+
+1.10.1
+- fixed collecting of database queries in Laravel 5.2 (thanks sebastiandedeyne)
+
+1.10
+- added Laravel 5.2 support (thanks jonphipps)
+- improved file storage to allow configuring directory permissions (thanks patrick-radius)
+- fixed interaction with PHPUnit in Lumen (thanks troyharvey)
+- removed "router dispatch" timeline event for now (due to Laravel 5.2 changes)
+
 1.9
 - added Lumen support (thanks dawiyo)
 - added aliases for all Clockwork parts so they can be resolved by the IoC container in Laravel and Lumen
